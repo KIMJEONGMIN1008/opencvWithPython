@@ -111,7 +111,7 @@ $ python helloOpenCV.py 얼굴사진.png
 ```
 ### 얼굴 인식 예시
 #### 원본
-![원본사진](얼굴 인식하고자 하는 image)
+![원본사진](Image.jpg)
 
 #### 초록색 사각형
 ![사각형 opencv](Faces_rectangle.png)
