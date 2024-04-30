@@ -73,11 +73,12 @@ faces = faceCascade.detectMultiScale(
 print("Found {0} faces!".format(len(faces)))
 
 # 얼굴에 초록색 사각형 그려주기 -> RGB (0, 255, 0)
-# 빨강은 (255,0,0), 파랑은 (0,0,255)
 for (x, y, w, h) in faces:
     cv2.rectangle(image, (x, y), (x+w, y+h), (0, 255, 0), 2)
-    # 원으로 그린다면?
-    # cv2.circle(image,(x+int(w/2),y+int(h/2)), w, (0,0,255), 2)
+# 얼굴에 빨간색 원으로 그려주기 -> RGB (0, 0, 255)
+for (x, y, w, h) in faces:
+    cv2.circle(image2,(x+int(w/2),y+int(h/2)), w, (0,0,255), 2)
+# 초록은 (0,255,0), 빨강은 (255,0,0), 파랑은 (0,0,255)
 
 # 얼굴에 사각형을 친 사진을 출력합니다
 cv2.imwrite("Faces.png", image)
@@ -92,16 +93,12 @@ $ python helloOpenCV.py 얼굴사진.png
 ```
 ### 얼굴 인식 예시
 #### 원본
-![원본사진](face_detection.jpeg)
+![원본사진](얼굴 인식하고자 하는 image)
 
 #### 초록색 사각형
-![사각형 opencv](Faces.png)
+![사각형 opencv](Faces_rectangle.png)
 #### 빨간색 원
 ![원 opencv](Faces_circle.png)
 
-## 김송이 얼굴 아니넼ㅋㅋㅋㅋㅋㅋ
-
 참고
-* [구글링에서 1번째 블로그](https://realpython.com/face-recognition-with-python/)
-* [구글링에서 2번째 블로그](https://towardsdatascience.com/face-recognition-for-beginners-a7a9bd5eb5c2)
 * [OpenCV 다운로드하자](https://nicewoong.github.io/development/2018/01/04/setting-opencv-dev/)
