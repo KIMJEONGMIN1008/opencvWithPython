@@ -120,5 +120,6 @@ $ python helloOpenCV.py 얼굴사진.png
 
 #### 이미지 출처
 * <a href="https://kr.freepik.com/free-photo/happy-people-outdoors-medium-shot_15500757.htm"> 출처 freepik</a>
-참고
+
+#### 참고
 * [OpenCV 다운로드하자](https://nicewoong.github.io/development/2018/01/04/setting-opencv-dev/)
