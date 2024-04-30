@@ -28,9 +28,9 @@ gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
 # 흑백사진 상태에서 얼굴을 탐지합니다
 faces = faceCascade.detectMultiScale(
     gray,
-    scaleFactor=1.05,
+    scaleFactor=1.1,
     minNeighbors=10,
-    minSize=(25, 25)
+    minSize=(30, 30)
     # flags = cv2.cv.CV_HAAR_SCALE_IMAGE
 )
 
@@ -43,7 +43,7 @@ for (x, y, w, h) in faces:
 
 # 얼굴에 빨간색 원 그려주기 -> RGB (0, 0, 255)    
 for (x, y, w, h) in faces:
-    cv2.circle(image2,(x+int(w/2),y+int(h/2)), w, (0,0,255), 2)
+    cv2.circle(image2,(x+int(w/2),y+int(h/2)), int(w/1.5), (0,0,255), 2)
 
 # 얼굴에 사각형을 친 사진을 출력합니다
 cv2.imwrite("Faces_rectangle.png", image1)
