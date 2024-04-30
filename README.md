@@ -49,7 +49,7 @@ import cv2
 import sys
 
 # 사진과 얼굴의 어떤 부분을 인식할까요?
-imagePath = "C:/Users/msaca/assignment/opencvWithPython/Image.jpg" # 이미지 파일의 경로
+imagePath = "이미지 파일의 경로" # 이미지 파일의 경로
 cascPath = "haarcascade_frontalface_default.xml"
 
 # haar cascade를 결정합니다
