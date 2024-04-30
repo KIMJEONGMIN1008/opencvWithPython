@@ -55,7 +55,7 @@ cascPath = "haarcascade_frontalface_default.xml"
 # haar cascade를 결정합니다
 faceCascade = cv2.CascadeClassifier(cascPath)
 
-
+# 화면에 띄울 윈도우 창을 만듭니다
 title1, title2, title3 = 'image', 'Face_rectangle', 'Face_circle'
 cv2.namedWindow(title1, cv2.WINDOW_NORMAL)
 cv2.namedWindow(title2, cv2.WINDOW_NORMAL)
@@ -63,11 +63,10 @@ cv2.namedWindow(title3, cv2.WINDOW_NORMAL)
 
 # 이미지를 읽어와 흑백사진으로 전환합니다
 image = cv2.imread(imagePath)
-image1 = image.copy()
+image1 = image.copy() # 원본 이미지를 복제
 image2 = image.copy()
 
-# 이미지 파일을 읽을 수 없을 때 출력됩니다
-if image is None:
+if image is None:  # 이미지를 읽을 수 없을 때 출력됨
     raise Exception(" 이미지 파일을 읽을 수 없습니다. 파일의 경로를 정확하게 입력해주세요. ")
 
 gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
@@ -76,9 +75,9 @@ gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
 # 흑백사진 상태에서 얼굴을 탐지합니다
 faces = faceCascade.detectMultiScale(
     gray,
-    scaleFactor=1.05,
+    scaleFactor=1.1,
     minNeighbors=10,
-    minSize=(25, 25)
+    minSize=(30, 30)
     # flags = cv2.cv.CV_HAAR_SCALE_IMAGE
 )
 
@@ -91,16 +90,26 @@ for (x, y, w, h) in faces:
 
 # 얼굴에 빨간색 원 그려주기 -> RGB (0, 0, 255)    
 for (x, y, w, h) in faces:
-    cv2.circle(image2,(x+int(w/2),y+int(h/2)), w, (0,0,255), 2)
+    cv2.circle(image2,(x+int(w/2),y+int(h/2)), int(w/1.5), (0,0,255), 2)
 
-# 얼굴에 사각형을 표시한 사진을 출력합니다
+# 얼굴에 사각형을 친 사진을 출력합니다
 cv2.imwrite("Faces_rectangle.png", image1)
-# 얼굴에 원을 표시한 사진을 출력합니다
 cv2.imwrite("Faces_circle.png", image2)
 
+# 윈도우 창을 띄웁니다
 cv2.imshow(title1, image)
 cv2.imshow(title2, image1)
 cv2.imshow(title3, image2)
+
+# 윈도우 창의 위치를 변경합니다
+cv2.moveWindow(title1, 0, 0)
+cv2.moveWindow(title2, 0, 340)
+cv2.moveWindow(title3, 480, 340)
+
+# 윈도우 창의 크기를 조절합니다.
+cv2.resizeWindow(title1, 450, 300)
+cv2.resizeWindow(title2, 450, 300)
+cv2.resizeWindow(title3, 450, 300)
 cv2.waitKey(0)
 ```
 `detectMultiScale` 함수 요소들의  [자세한 내용이 궁금하다면](https://docs.opencv.org/2.4/modules/objdetect/doc/cascade_classification.html#cascadeclassifier-detectmultiscale)
